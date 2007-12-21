@@ -11,6 +11,7 @@ Source0:	http://search.cpan.org/CPAN/authors/id/C/CC/CCWALLACE/%{real_name}-%{ve
 BuildRequires:	perl-devel
 #BuildRequires:	perl-CGI-Simple
 BuildArch:	noarch
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 "CGI::Auth" provides password authentication for web-based applications. It
