@@ -3,7 +3,7 @@
 Summary:	Simple session-based password authentication for CGI applications
 Name:		perl-%{real_name}
 Version:	3.00
-Release:	%mkrel 1
+Release:	%mkrel 3
 License:	BSD-like
 Group:		Development/Perl
 URL:		http://search.cpan.org/dist/%{real_name}
