@@ -1,17 +1,18 @@
-%define real_name CGI-Auth
+%define upstream_name    CGI-Auth
+%define upstream_version 3.00
+
+Name:       perl-%{upstream_name}
+Version:    %perl_convert_version %{upstream_version}
+Release:    %mkrel 5
 
 Summary:	Simple session-based password authentication for CGI applications
-Name:		perl-%{real_name}
-Version:	3.00
-Release:	%mkrel 4
 License:	BSD-like
 Group:		Development/Perl
-URL:		http://search.cpan.org/dist/%{real_name}
-Source0:	http://search.cpan.org/CPAN/authors/id/C/CC/CCWALLACE/%{real_name}-%{version}.tar.bz2
-BuildRequires:	perl-devel
-#BuildRequires:	perl-CGI-Simple
+Url:		http://search.cpan.org/dist/%{upstream_name}
+Source0:	http://search.cpan.org/CPAN/authors/id/C/CC/CCWALLACE/%{upstream_name}-%{upstream_version}.tar.bz2
+
 BuildArch:	noarch
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}
 
 %description
 "CGI::Auth" provides password authentication for web-based applications. It
@@ -31,8 +32,7 @@ creates a session file and provides the session file parameter to the rest of
 the script.
 
 %prep
-
-%setup -q -n %{real_name}-%{version} 
+%setup -q -n %{upstream_name}-%{upstream_version}
 
 %build
 %{__perl} Makefile.PL INSTALLDIRS=vendor
@@ -43,7 +43,6 @@ the script.
 
 %install
 rm -rf %{buildroot}
-
 %makeinstall_std
 
 %clean 
