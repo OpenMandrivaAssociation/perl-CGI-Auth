@@ -1,9 +1,9 @@
 %define upstream_name    CGI-Auth
 %define upstream_version 3.00
 
-Name:       perl-%{upstream_name}
-Version:    %perl_convert_version %{upstream_version}
-Release:    %mkrel 6
+Name:		perl-%{upstream_name}
+Version:	%perl_convert_version %{upstream_version}
+Release:	7
 
 Summary:	Simple session-based password authentication for CGI applications
 License:	BSD-like
@@ -11,8 +11,8 @@ Group:		Development/Perl
 Url:		http://search.cpan.org/dist/%{upstream_name}
 Source0:	http://search.cpan.org/CPAN/authors/id/C/CC/CCWALLACE/%{upstream_name}-%{upstream_version}.tar.bz2
 
+BuildRequires:	perl-devel
 BuildArch:	noarch
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}
 
 %description
 "CGI::Auth" provides password authentication for web-based applications. It
@@ -35,21 +35,48 @@ the script.
 %setup -q -n %{upstream_name}-%{upstream_version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
+perl Makefile.PL INSTALLDIRS=vendor
 %make
 
 #%%check
 #make test
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std
 
-%clean 
-rm -rf %{buildroot}
-
 %files
-%defattr(-,root,root)
 %doc Changes README extra
 %{perl_vendorlib}/CGI/*
 %{_mandir}/*/*
+
+%changelog
+* Sat May 28 2011 Funda Wang <fwang@mandriva.org> 3.0.0-6mdv2011.0
++ Revision: 680684
+- mass rebuild
+
+* Fri Feb 12 2010 Jérôme Quelin <jquelin@mandriva.org> 3.0.0-5mdv2011.0
++ Revision: 504598
+- rebuild using %%perl_convert_version
+
+* Fri Sep 04 2009 Thierry Vignaud <tv@mandriva.org> 3.00-4mdv2010.0
++ Revision: 430302
+- rebuild
+
+* Wed Jul 23 2008 Thierry Vignaud <tv@mandriva.org> 3.00-3mdv2009.0
++ Revision: 241164
+- rebuild
+- kill re-definition of %%buildroot on Pixel's request
+
+  + Olivier Blin <oblin@mandriva.com>
+    - restore BuildRoot
+
+* Mon May 14 2007 Oden Eriksson <oeriksson@mandriva.com> 3.00-1mdv2008.0
++ Revision: 26732
+- disable the tests for now because of unknown iurt problems
+- fix deps
+- Import perl-CGI-Auth
+
+
+
+* Mon May 14 2007 Oden Eriksson <oeriksson@mandriva.com> 3.00-1mdv2007.1
+- initial Mandriva package 
