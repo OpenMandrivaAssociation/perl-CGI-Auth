@@ -1,15 +1,13 @@
 %define upstream_name    CGI-Auth
-%define upstream_version 3.00
-
 Name:		perl-%{upstream_name}
-Version:	%{upstream_version}
-Release:	10
+Version:	3.00
+Release:	11
 
 Summary:	Simple session-based password authentication for CGI applications
 License:	BSD-like
 Group:		Development/Perl
 Url:		https://metacpan.org/dist/CGI-Auth
-Source0:	https://cpan.metacpan.org/authors/id/C/CC/CCWALLACE/CGI-Auth-%{upstream_version}.tar.gz
+Source0:	https://cpan.metacpan.org/authors/id/C/CC/CCWALLACE/CGI-Auth-%{version}.tar.gz
 
 BuildRequires:	make
 BuildRequires:	perl-devel
@@ -33,7 +31,7 @@ creates a session file and provides the session file parameter to the rest of
 the script.
 
 %prep
-%setup -q -n %{upstream_name}-%{upstream_version}
+%setup -q -n %{upstream_name}-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
@@ -57,9 +55,7 @@ perl Makefile.PL INSTALLDIRS=vendor
 
 * Fri Feb 12 2010 Jérôme Quelin <jquelin@mandriva.org> 3.0.0-5mdv2011.0
 + Revision: 504598
-- rebuild using %%perl_convert_version
-
-* Fri Sep 04 2009 Thierry Vignaud <tv@mandriva.org> 3.00-4mdv2010.0
+- rebuild using %3.00 Fri Sep 04 2009 Thierry Vignaud <tv@mandriva.org> 3.00-4mdv2010.0
 + Revision: 430302
 - rebuild
 
